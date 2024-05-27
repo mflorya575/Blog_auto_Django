@@ -41,6 +41,8 @@ INSTALLED_APPS = [
 
     # Приложения
     'app_blog.apps.AppBlogConfig',
+
+    'django.contrib.postgres',
 ]
 
 MIDDLEWARE = [
