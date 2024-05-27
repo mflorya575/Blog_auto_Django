@@ -33,6 +33,8 @@ class Post(models.Model):
     objects = models.Manager()  # менеджер, применяемый по умолчанию
     published = PublishedManager()  # конкретно-прикладной менеджер
 
+    map_html = models.TextField(blank=True, null=True)  # Поле для HTML-кода карты
+
     class Meta:
         verbose_name = 'пост'
         verbose_name_plural = 'Посты'

@@ -7,6 +7,7 @@
         Published {{ post.publish }} by {{ post.author }}
     </p>
     {{ post.body|linebreaks }}
+
     {% with comments.count as total_comments %}
         <h2>
             {{ total_comments }} comment{{ total_comments|pluralize }}
@@ -24,4 +25,11 @@
         <p>Комментариев нет.</p>
     {% endfor %}
     {% include "includes/comment_form.html" %}
+
+    {% if post.map_html %}
+        <div class="map-container">
+          {{ post.map_html|safe }}
+        </div>
+    {% endif %}
+
 {% endblock %}
