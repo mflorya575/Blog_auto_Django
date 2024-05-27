@@ -34,7 +34,11 @@ def post_detail(request, year, month, day, post):
                              publish__year=year,
                              publish__month=month,
                              publish__day=day)
-    return render(request, 'blog/detail.html', {'post': post})
+    # Список активных комментариев к этому посту
+    comments = post.comments.filter(active=True)
+    # Форма для комментирования пользователями
+    form = CommentForm()
+    return render(request, 'blog/detail.html', {'post': post, 'comments': comments, 'form': form})
 
 
 @require_POST
@@ -52,4 +56,4 @@ def post_comment(request, post_id):
         comment.post = post
         # Сохранить комментарий в базе данных
         comment.save()
-    return render(request, 'comment.html', {'post': post, 'form': form, 'comment': comment})
+    return render(request, 'blog/comment.html', {'post': post, 'form': form, 'comment': comment})
