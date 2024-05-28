@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 from django.urls import reverse
+from django.core.validators import FileExtensionValidator
 
 
 class PublishedManager(models.Manager):
@@ -34,6 +35,14 @@ class Post(models.Model):
     published = PublishedManager()  # конкретно-прикладной менеджер
 
     map_html = models.TextField(blank=True, null=True)  # Поле для HTML-кода карты
+
+    thumbnail = models.ImageField(
+        verbose_name='Изображение записи',
+        blank=True,
+        upload_to='images/thumbnails/%Y/%m/%d/',
+        validators=[FileExtensionValidator(allowed_extensions=('png', 'jpg', 'webp', 'jpeg', 'gif'))]
+    )
+    upload_to = 'images/thumbnails/%Y/%m/%d/',
 
     class Meta:
         verbose_name = 'пост'

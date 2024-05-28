@@ -7,6 +7,11 @@
         Published {{ post.publish }} by {{ post.author }}
     </p>
     {{ post.body|linebreaks }}
+    {% if post.thumbnail %}
+        <img src="{{ post.thumbnail.url }}" alt="Изображение записи">
+    {% else %}
+        <p>Нет изображения</p>
+    {% endif %}
 
     {% with comments.count as total_comments %}
         <h2>
