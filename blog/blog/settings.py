@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     # Приложения
     'app_blog.apps.AppBlogConfig',
+    'accounts.apps.AccountsConfig',
 
     'django.contrib.postgres',
 ]
