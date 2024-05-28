@@ -13,6 +13,18 @@
 <div id="sidebar">
     <h2>My blog</h2>
     <p>This is my blog.</p>
+    <hr>
+    {% if user.is_authenticated %}
+        Привет, {{ user.username }}!
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <a href="#" onclick="parentNode.submit();">Выйти</a>
+    </form>
+    {% else %}
+        <p>Зайдите в аккаунт</p>
+        <a href="{% url 'login' %}">Войти</a>
+    {% endif %}
+    <hr>
 </div>
 </body>
 </html>
