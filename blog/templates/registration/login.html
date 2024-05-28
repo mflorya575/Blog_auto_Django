@@ -8,4 +8,5 @@
         {% csrf_token %}
         <p><input type="submit" value="Логин"></p>
     </form>
+    <p><a href="{% url 'password_reset' %}">Восстановить пароль</a></p>
 {% endblock %}
