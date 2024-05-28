@@ -1,13 +1,15 @@
-from .models import Post, Comment
+from .models import Post, Comment, CarDealership
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from django.views.generic import ListView
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
-from .forms import CommentForm, SearchForm
+from .forms import CommentForm, SearchForm, CarDealershipForm
 from django.core.mail import send_mail
 from django.views.decorators.http import require_POST
+
+from django.contrib.auth.decorators import login_required
 
 
 def post_list(request):
@@ -78,3 +80,18 @@ def post_comment(request, post_id):
         # Сохранить комментарий в базе данных
         comment.save()
     return render(request, 'blog/comment.html', {'post': post, 'form': form, 'comment': comment})
+
+
+@login_required
+def add_dealership(request):
+    if request.method == 'POST':
+        form = CarDealershipForm(request.POST, request.FILES)
+        if form.is_valid():
+            dealership = form.save(commit=False)
+            dealership.user = request.user
+            dealership.save()
+            # Страница успешного добавления
+            return render(request, 'blog/add_dealership.html', {'form': CarDealershipForm()})
+    else:
+        form = CarDealershipForm()
+    return render(request, 'blog/add_dealership.html', {'form': form})

@@ -84,3 +84,20 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'Комментарий {self.name} на публикацию {self.post}'
+
+
+class CarDealership(models.Model):
+    name = models.CharField(max_length=255)
+    address = models.CharField(max_length=255)
+    photo = models.ImageField(upload_to='dealership_photos/')
+    car_count = models.PositiveIntegerField()
+    description = models.TextField()
+    approved = models.BooleanField(default=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'авто дилер'
+        verbose_name_plural = 'Авто дилеры'
+
+    def __str__(self):
+        return self.name
