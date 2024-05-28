@@ -5,9 +5,45 @@
     <title>{% block title %}{% endblock %}</title>
     <link href="{% static 'css/blog.css' %}" rel="stylesheet">
 </head>
+<style>
+    .search-form {
+    /* Добавьте стили для блока формы */
+    margin-bottom: 20px;
+}
+
+.search-form input[type="text"] {
+    /* Добавьте стили для текстового поля */
+    width: 200px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.search-button {
+    /* Добавьте стили для кнопки поиска */
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    /* Добавьте стили для состояния наведения на кнопку */
+    background-color: #0056b3;
+}
+
+
+
+</style>
 <body>
+<header class="header">
+    <a href="{% url 'blog:add_dealership' %}">Обратная связь</a>
+</header>
 <div id="content">
     {% block content %}
+
     {% endblock %}
 </div>
 {% if messages %}
@@ -16,8 +52,7 @@
     {% endfor %}
 {% endif %}
 <div id="sidebar">
-    <h2>My blog</h2>
-    <p>This is my blog.</p>
+    <h2>Личная информация</h2>
     <hr>
     {% if user.is_authenticated %}
         Привет, {{ user.username }}!
@@ -30,6 +65,32 @@
         <a href="{% url 'login' %}">Войти</a>
     {% endif %}
     <hr>
+    {% if results %}
+        <h3>Найден(о) {{ results.count }} результат(ов){{ results.count|pluralize }}</h3>
+        {% for post in results %}
+            <h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
+            {{ post.body|truncatewords:30|linebreaks }}
+        {% empty %}
+            <p>Нет результатов по вашему запросу.</p>
+        {% endfor %}
+        <p><a href="{% url 'blog:post_search' %}">Поиск заново</a></p>
+    {% else %}
+        <form method="get" class="search-form">
+            <div class="form-group">
+                <label for="id_query" class="control-label"></label>
+                {{ form.query }}
+            </div>
+            <input type="submit" value="Поиск" class="search-button">
+        </form>
+    {% endif %}
 </div>
+
+
+
+
+<script>
+
+</script>
+
 </body>
 </html>

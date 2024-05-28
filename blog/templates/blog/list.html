@@ -1,33 +1,18 @@
 {% extends "base.html" %}
-{% block title %}My Blog{% endblock %}
+{% block title %}Авто дилеры{% endblock %}
 
 {% block content %}
-    <h1>My Blog</h1>
+    <h1 class="main-title">Авто-<span id="blue">дилеры</span></h1>
 
-    {% if results %}
-        <h1>Posts containing "{{ query }}"</h1>
-        <h3>Found {{ results.count }} result{{ results.count|pluralize }}</h3>
-        {% for post in results %}
-            <h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
-            {{ post.body|truncatewords:30|linebreaks }}
-        {% empty %}
-            <p>There are no results for your query.</p>
-        {% endfor %}
-        <p><a href="{% url 'blog:post_search' %}">Search again</a></p>
-    {% else %}
-        <h1>Search for posts</h1>
-        <form method="get">
-            {{ form.as_p }}
-            <input type="submit" value="Search">
-        </form>
-    {% endif %}
+
 
     {% if not results %}
         {% for post in posts %}
+            <img class="img-list" src="{{ post.thumbnail.url }}" alt="Изображение записи">
             <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
-            <p class="date">Published {{ post.publish }} by {{ post.author }}</p>
-            {{ post.body|truncatewords:30|linebreaks }}
+            <p class="post-text">{{ post.body|truncatewords:20|linebreaks }}</p>
         {% endfor %}
         {% include "pagination.html" with page=posts %}
     {% endif %}
+
 {% endblock %}

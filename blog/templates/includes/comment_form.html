@@ -1,6 +1,15 @@
 <h2>Добавить новый комментарий</h2>
 <form action="{% url 'blog:post_comment' post.id %}" method="post">
-    {{ form.as_p }}
+    <div class="form-group margin">
+        <label for="id_name">Имя</label>
+        {{ form.name }}
+    </div>
+    <div class="form-group">
+        <label for="id_body">Комментарий</label>
+        {{ form.body }}
+    </div>
     {% csrf_token %}
-    <p><input type="submit" value="Комментарий"></p>
+    <div class="form-group margin mt">
+        <input type="submit" value="Комментарий" class="btn btn-primary">
+    </div>
 </form>

@@ -3,26 +3,26 @@
 
 {% block content %}
     <h1>{{ post.title }}</h1>
-    <p class="date">
-        Published {{ post.publish }} by {{ post.author }}
-    </p>
-    {{ post.body|linebreaks }}
+
     {% if post.thumbnail %}
-        <img src="{{ post.thumbnail.url }}" alt="Изображение записи">
+        <img class="img-detail" src="{{ post.thumbnail.url }}" alt="Изображение записи">
     {% else %}
         <p>Нет изображения</p>
     {% endif %}
+    <p class="text-detail">
+        {{ post.body|linebreaks }}
+    </p>
 
     {% with comments.count as total_comments %}
         <h2>
-            {{ total_comments }} comment{{ total_comments|pluralize }}
+            Комментарии: {{ total_comments }}
         </h2>
+        <hr>
     {% endwith %}
     {% for comment in comments %}
         <div class="comment">
             <p class="info">
-                Comment {{ forloop.counter }} by {{ comment.name }}
-                {{ comment.created }}
+                Комментарий {{ forloop.counter }} от {{ comment.name }}
             </p>
             {{ comment.body|linebreaks }}
         </div>

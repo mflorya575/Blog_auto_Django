@@ -23,6 +23,8 @@ class Post(models.Model):
                                related_name='blog_posts')
 
     body = models.TextField()
+    address = models.CharField(max_length=100, default=False)
+    tel = models.CharField(max_length=20, default=False)
 
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
