@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import Post, Comment
+from django.utils.safestring import mark_safe
+
+from .models import Post, Comment, Banner
 
 
 @admin.register(Post)
@@ -20,6 +22,17 @@ class CommentAdmin(admin.ModelAdmin):
     list_filter = ['active', 'created', 'updated']
     search_fields = ['name', 'body']
     fields = ('name', 'body', 'post', 'active')
+
+
+@admin.register(Banner)
+class BannerAdmin(admin.ModelAdmin):
+    list_display = ('title', 'published_at', 'is_active')
+    search_fields = ('title',)
+
+    # Настройки для отображения изображений в админке (опционально)
+
+    def image_tag(self, obj):
+        return mark_safe(f'<img src="{obj.image.url}" width="150" height="300" />')
 
 
 # class CarDealershipAdmin(admin.ModelAdmin):

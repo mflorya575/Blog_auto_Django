@@ -1,4 +1,4 @@
-from .models import Post, Comment
+from .models import Post, Comment, Banner
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -17,6 +17,7 @@ def post_list(request):
     query = None
     results = []
     post_list = Post.published.all()
+#     banners = Banner.published.all()
 
     if 'query' in request.GET:
         form = SearchForm(request.GET)
