@@ -4,7 +4,18 @@
 {% block content %}
     <h1 class="main-title">Авто-<span id="blue">мошенник.рф</span></h1>
     <h2 class="title-h2">Отзывы об автосалонах: вся правда про серых дилеров</h2>
-
+    <div class="cities">
+        {% for post in posts %}
+            <p class="city-back">{{ post.city }}</p>
+        <p class="city-back">{{ post.city }}</p>
+        <p class="city-back">{{ post.city }}</p>
+        <p class="city-back">{{ post.city }}</p>
+        <p class="city-back">{{ post.city }}</p>
+        <p class="city-back">{{ post.city }}</p>
+        <p class="city-back">{{ post.city }}</p>
+        <p class="city-back">{{ post.city }}</p>
+        {% endfor %}
+    </div>
 
 
     {% if not results %}

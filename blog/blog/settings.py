@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
 
     'django.contrib.postgres',
+    'taggit',
 ]
 
 MIDDLEWARE = [

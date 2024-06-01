@@ -23,6 +23,7 @@ class Post(models.Model):
     body = models.TextField()
     address = models.CharField(max_length=100, default=False)
     tel = models.CharField(max_length=20, default=False)
+    city = models.CharField(max_length=100, default=False)
     car_count = models.PositiveIntegerField(default=0)
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
@@ -30,12 +31,14 @@ class Post(models.Model):
     status = models.CharField(max_length=2,
                               choices=Status.choices,
                               default=Status.DRAFT)
-#
+
     objects = models.Manager()  # менеджер, применяемый по умолчанию
     published = PublishedManager()  # конкретно-прикладной менеджер
-#
+
+    # tags = TaggableManager()
+
     map_html = models.TextField(blank=True, null=True)  # Поле для HTML-кода карты
-#
+
     thumbnail = models.ImageField(
         verbose_name='Изображение записи',
         blank=True,

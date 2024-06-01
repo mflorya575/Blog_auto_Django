@@ -15,4 +15,4 @@ class SearchForm(forms.Form):
 class CarDealershipForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'author', 'address', 'tel', 'thumbnail', 'car_count', 'body']
+        fields = ['title', 'author', 'address', 'tel', 'city', 'thumbnail', 'car_count', 'body']

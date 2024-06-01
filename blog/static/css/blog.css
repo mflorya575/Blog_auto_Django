@@ -139,3 +139,17 @@ iframe {
     border-radius: 20px;
     border-left: 5px solid;
 }
+
+.cities {
+    display: flex;
+    gap: 10px;
+    max-width: 1000px;
+    flex-wrap: wrap;
+}
+
+.city-back {
+    background: #efefef;
+    border-radius: 15px;
+    padding: 10px;
+}
+
