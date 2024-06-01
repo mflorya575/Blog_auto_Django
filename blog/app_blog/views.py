@@ -1,4 +1,4 @@
-from .models import Post, Comment, CarDealership
+from .models import Post, Comment
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger

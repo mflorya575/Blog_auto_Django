@@ -1,5 +1,5 @@
 from django import forms
-from .models import Comment, CarDealership
+from .models import Comment, Post
 
 
 class CommentForm(forms.ModelForm):
@@ -14,5 +14,5 @@ class SearchForm(forms.Form):
 
 class CarDealershipForm(forms.ModelForm):
     class Meta:
-        model = CarDealership
-        fields = ['name', 'address', 'photo', 'car_count', 'description']
+        model = Post
+        fields = ['title', 'author', 'address', 'tel', 'thumbnail', 'car_count', 'body']

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Comment, CarDealership
+from .models import Post, Comment
 
 
 @admin.register(Post)
@@ -22,14 +22,14 @@ class CommentAdmin(admin.ModelAdmin):
     fields = ('name', 'body', 'post', 'active')
 
 
-class CarDealershipAdmin(admin.ModelAdmin):
-    list_display = ['name', 'address', 'car_count', 'approved']
-    list_filter = ['approved']
-    actions = ['approve_dealerships']
+# class CarDealershipAdmin(admin.ModelAdmin):
+#     list_display = ['name', 'address', 'car_count', 'approved']
+#     list_filter = ['approved']
+#     actions = ['approve_dealerships']
+#
+#     def approve_dealerships(self, request, queryset):
+#         queryset.update(approved=True)
+#     approve_dealerships.short_description = "Одобрить выбранные автосалоны"
 
-    def approve_dealerships(self, request, queryset):
-        queryset.update(approved=True)
-    approve_dealerships.short_description = "Одобрить выбранные автосалоны"
 
-
-admin.site.register(CarDealership, CarDealershipAdmin)
+# admin.site.register(CarDealershipAdmin)
