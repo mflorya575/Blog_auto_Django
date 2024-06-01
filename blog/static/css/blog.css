@@ -140,6 +140,17 @@ iframe {
     border-left: 5px solid;
 }
 
+.title-h3 {
+    color: #00abff;
+    background: #efefef;
+    padding: 10px;
+    border-radius: 20px;
+    border-left: 4px solid;
+    border-right: 4px solid;
+    max-width: 300px;
+    text-align: center;
+}
+
 .cities {
     display: flex;
     gap: 10px;
