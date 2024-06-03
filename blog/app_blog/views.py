@@ -17,7 +17,7 @@ def post_list(request):
     query = None
     results = []
     post_list = Post.published.all()
-#     banners = Banner.published.all()
+    banners = Banner.objects.filter(is_active=True)
 
     if 'query' in request.GET:
         form = SearchForm(request.GET)
@@ -48,6 +48,7 @@ def post_list(request):
         'form': form,
         'query': query,
         'results': results,
+        'banners': banners,
     })
 
 

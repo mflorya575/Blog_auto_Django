@@ -164,3 +164,15 @@ iframe {
     padding: 10px;
 }
 
+.banner-custom {
+    max-height: 300px;
+}
+
+.car-color {
+    color: #00abff;
+}
+
+#car-color {
+    color: #00abff;
+}
+
