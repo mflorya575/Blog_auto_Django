@@ -30,14 +30,16 @@
 </div>
 
 
-
-    {% if not results %}
-        {% for post in posts %}
-            <img class="img-list" src="{{ post.thumbnail.url }}" alt="Изображение записи">
-            <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
-            <p class="post-text">{{ post.body|truncatewords:20|linebreaks }}</p>
-        {% endfor %}
-        {% include "pagination.html" with page=posts %}
-    {% endif %}
-
+    <div class="main-wrapper">
+        {% if not results %}
+            {% for post in posts %}
+                <div>
+                    <img class="img-list" src="{{ post.thumbnail.url }}" alt="Изображение записи">
+                    <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+                    <p class="post-text">{{ post.body|truncatewords:20|linebreaks }}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% include "pagination.html" with page=posts %}
 {% endblock %}

@@ -176,3 +176,20 @@ iframe {
     color: #00abff;
 }
 
+.main-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.post-text {
+    max-width: 230px;
+}
+
+.main-wrapper div p {
+    max-width: 230px;
+}
+
+.main-wrapper div {
+    margin-right: 40px;
+}
+

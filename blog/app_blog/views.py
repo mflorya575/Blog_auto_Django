@@ -32,7 +32,7 @@ def post_list(request):
             post_list = results  # Используем результаты поиска для постраничного вывода
 
     # Постраничная разбивка с 3 постами на страницу
-    paginator = Paginator(post_list, 3)
+    paginator = Paginator(post_list, 15)
     page_number = request.GET.get('page')
     try:
         posts = paginator.page(page_number)
