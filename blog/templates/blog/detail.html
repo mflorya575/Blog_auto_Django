@@ -2,16 +2,21 @@
 {% block title %}{{ post.title }}{% endblock %}
 
 {% block content %}
-    <h1>{{ post.title }}</h1>
+    <div>
+        <h1>{{ post.title }}</h1>
 
-    {% if post.thumbnail %}
-        <img class="img-detail" src="{{ post.thumbnail.url }}" alt="Изображение записи">
-    {% else %}
-        <p>Нет изображения</p>
-    {% endif %}
-    <p class="text-detail">
-        {{ post.body|linebreaks }}
-    </p>
+        {% if post.thumbnail %}
+            <img class="img-detail" src="{{ post.thumbnail.url }}" alt="Изображение записи">
+        {% else %}
+            <p>Нет изображения</p>
+        {% endif %}
+        <p class="p-address">Адрес: <span id="address">{{ post.address }}</span></p>
+        <p class="p-tel">Телефон: <span id="tel">{{ post.tel }}</span></p>
+        <p class="p-city">Город: <span id="city">{{ post.city }}</span></p>
+        <p class="text-detail">
+            <span id="max-width">{{ post.body }}</span>
+        </p>
+    </div>
 
     {% with comments.count as total_comments %}
         <h2>

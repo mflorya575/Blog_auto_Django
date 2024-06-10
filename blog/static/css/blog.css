@@ -187,9 +187,46 @@ iframe {
 
 .main-wrapper div p {
     max-width: 230px;
+    line-height: 80%;
+}
+
+.main-wrapper div h2 a {
+    text-decoration: none;
+}
+
+.main-wrapper div h2 a:hover {
+    text-decoration: underline;
 }
 
 .main-wrapper div {
     margin-right: 40px;
+}
+
+.p-address {
+    font-weight: 500;
+}
+
+.p-tel {
+    font-weight: 500;
+}
+
+.p-city {
+    font-weight: 500;
+}
+
+#address {
+    font-weight: 300;
+}
+
+#city {
+    font-weight: 300;
+}
+
+#tel {
+    font-weight: 300;
+}
+
+#max-width {
+    max-width: 230px;
 }
 
