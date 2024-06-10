@@ -230,3 +230,16 @@ iframe {
     max-width: 230px;
 }
 
+.p-signup {
+    color: #000000;
+    text-decoration: none;
+}
+
+#signup {
+    color: #00abff;
+}
+
+#signup:hover {
+    text-decoration: underline;
+}
+

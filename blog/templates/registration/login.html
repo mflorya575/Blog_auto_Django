@@ -3,6 +3,7 @@
 {% block title %} Логин {% endblock %}
 {% block content %}
     <h2> Логин </h2>
+    <a class="p-signup" href="{% url 'signup' %}">Если нет аккаунта, можете <span id="signup">зарегистрироваться</span></a>
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}
