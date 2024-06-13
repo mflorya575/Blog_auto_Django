@@ -19,6 +19,10 @@ def post_list(request):
     post_list = Post.published.all()
     banners = Banner.objects.filter(is_active=True)
 
+    # Извлекаем уникальные города из опубликованных постов
+    all_cities = Post.objects.values_list('city', flat=True)
+    unique_cities = list(set(all_cities))
+
     if 'query' in request.GET:
         form = SearchForm(request.GET)
         if form.is_valid():
@@ -49,6 +53,7 @@ def post_list(request):
         'query': query,
         'results': results,
         'banners': banners,
+        'unique_cities': unique_cities,
     })
 
 
