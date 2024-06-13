@@ -3,7 +3,38 @@
 
 {% block content %}
     <h1 class="main-title">auto-<span id="blue">moshenik.ru</span></h1>
+
+    {% if results %}
+        <h3>Найден(о) {{ results.count }} результат(ов){{ results.count|pluralize }}</h3>
+        {% for post in results %}
+            <h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
+            {{ post.body|truncatewords:30|linebreaks }}
+        {% empty %}
+            <p>Нет результатов по вашему запросу.</p>
+        {% endfor %}
+        <p><a href="{% url 'blog:post_search' %}">Поиск заново</a></p>
+    {% else %}
+        <form method="get" class="search-form">
+            <div class="form-group">
+                <label for="id_query" class="control-label"></label>
+                {{ form.query }}
+            </div>
+            <input type="submit" value="Поиск" class="search-button">
+        </form>
+    {% endif %}
+
     <h2 class="title-h2">Отзывы об автосалонах: вся правда про серых дилеров</h2>
+
+    <p>
+        Если вы пострадали от действий сотрудников автосалона или вас пытались обмануть при
+        покупке автомобиля — обязательно оставьте отзыв. Модераторы проверят ваши отзывы, после чего другие
+        пользователи смогут увидеть их. Это поможет другим людям не попасться на удочку аферистов.
+    </p>
+    <p>
+        Воспользуйтесь формой обратной связи, если нужный автоцентр отсутствует в списке салонов сайта.
+        Но сначала попробуйте найти его в нашей базе, вбив название в поисковой строке или по тегам городов.
+    </p>
+
     <h3 class="title-h3">Города</h3>
     <div class="cities">
         {% for city in unique_cities %}
