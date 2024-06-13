@@ -7,7 +7,7 @@
     <h3 class="title-h3">Города</h3>
     <div class="cities">
         {% for city in unique_cities %}
-            <a href="?city={{ city }}" class="city-back city-filter">{{ city }}</a>
+            <a href="#" class="city-back city-filter" data-city="{{ city }}">{{ city }}</a>
         {% endfor %}
     </div>
 
@@ -30,18 +30,20 @@
 </div>
 
 
-    <div class="main-wrapper">
-        {% if not results %}
-            {% for post in posts %}
-                <div>
-                    <img class="img-list" src="{{ post.thumbnail.url }}" alt="Изображение записи">
-                    <h2><a class="list-link" href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
-                    <p class="p-address">Адрес: <span id="address">{{ post.address }}</span></p>
-                    <p class="p-tel">Телефон: <span id="tel">{{ post.tel }}</span></p>
-                    <p class="p-city">Город: <span id="city">{{ post.city }}</span></p>
-                </div>
-            {% endfor %}
-        {% endif %}
-    </div>
+    {% if selected_city %}
+        <h2>Posts for {{ selected_city }}</h2>
+    {% else %}
+        <h2>All Posts</h2>
+    {% endif %}
+
+    {% for postt in filtered_posts %}
+        <div class="post">
+            <h3>{{ postt.title }}</h3>
+            <p>{{ postt.content }}</p>
+            <p>City: {{ postt.city }}</p>
+        </div>
+    {% empty %}
+        <p>No posts found.</p>
+    {% endfor %}
 {% include "pagination.html" with page=posts %}
 {% endblock %}

@@ -57,6 +57,20 @@ def post_list(request):
     })
 
 
+def filter_posts(request):
+    city = request.GET.get('city')
+    if city:
+        filtered_posts = Post.published.filter(city=city)
+    else:
+        filtered_posts = Post.published.all()
+
+    context = {
+        'filtered_posts': filtered_posts,
+        'selected_city': city  # Передаем выбранный город для отображения на странице
+    }
+    return render(request, 'filtered_posts.html', context)
+
+
 def post_detail(request, year, month, day, post):
     post = get_object_or_404(Post,
                              status=Post.Status.PUBLISHED,

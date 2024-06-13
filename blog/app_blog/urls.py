@@ -9,6 +9,8 @@ app_name = 'blog'
 urlpatterns = [
     # представления поста
     path('', views.post_list, name='post_list'),
+    path('filter-posts/', views.filter_posts, name='filter_posts'),
+    path('filter-posts/<str:city>/', views.filter_posts, name='filter_posts_city'),
 
     path('<int:year>/<int:month>/<int:day>/<slug:post>/',
          views.post_detail,
