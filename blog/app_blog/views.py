@@ -106,3 +106,12 @@ def rools(request):
     }
 
     return render(request, 'rools/rools.html', context)
+
+
+def policy(request):
+
+    context = {
+        'title': 'Политика конфиденциальности'
+    }
+
+    return render(request, 'rools/policy.html', context)

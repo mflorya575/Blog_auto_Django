@@ -35,7 +35,7 @@
             {% for post in posts %}
                 <div>
                     <img class="img-list" src="{{ post.thumbnail.url }}" alt="Изображение записи">
-                    <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+                    <h2><a class="list-link" href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
                     <p class="p-address">Адрес: <span id="address">{{ post.address }}</span></p>
                     <p class="p-tel">Телефон: <span id="tel">{{ post.tel }}</span></p>
                     <p class="p-city">Город: <span id="city">{{ post.city }}</span></p>

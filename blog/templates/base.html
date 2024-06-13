@@ -58,9 +58,10 @@
 </style>
 <body>
 <header class="header">
-    <a href="{% url 'blog:post_list' %}">Главная</a>
-    <a href="{% url 'blog:add_dealership' %}">Обратная связь</a>
-    <a href="{% url 'blog:rools' %}">Правила сайта</a>
+    <a class="main-link" href="{% url 'blog:post_list' %}">Главная</a>
+    <a class="main-link" href="{% url 'blog:add_dealership' %}">Обратная связь</a>
+    <a class="main-link" href="{% url 'blog:rools' %}">Правила сайта</a>
+    <a class="main-link" href="{% url 'blog:policy' %}">Политика конфиденциальности</a>
 </header>
 <div id="content">
     {% block content %}

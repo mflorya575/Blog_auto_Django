@@ -22,4 +22,5 @@ urlpatterns = [
     # path('dealership-success/', TemplateView.as_view(template_name='blog/dealership_success.html'),
     #      name='dealership_success'),
     path('rools/', views.rools, name='rools'),
+    path('policy/', views.policy, name='policy'),
 ]
