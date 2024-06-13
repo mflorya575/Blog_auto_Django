@@ -97,3 +97,12 @@ def add_dealership(request):
     else:
         form = CarDealershipForm()
     return render(request, 'blog/add_dealership.html', {'form': form})
+
+
+def rools(request):
+
+    context = {
+        'title': 'Правила сайта'
+    }
+
+    return render(request, 'rools/rools.html', context)
